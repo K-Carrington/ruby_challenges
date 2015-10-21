@@ -13,9 +13,9 @@ def prime (n)
   primes = []
   for i in 1..n
     d = divisor(i)
-      if d.length == 2
-        primes << i
-      end
+    if d.length == 2
+      primes << i
+    end
   end
   return primes
 end
@@ -29,25 +29,27 @@ def fib(n)
   	fibs << 1
   end
   sum = 2
-  for i in 2..(n-1)
+  i = 2
+  while true
     sum = fibs[i-2] + fibs[i-1]
+    break if sum > n;
     fibs << sum
+    i += 1
   end
   return fibs
 end
 
-puts "Enter number to find prime of:"
-n = gets
-
-p = prime(n.to_i)
-puts "Primes of #{n}: #{p}"
+puts "Enter number to find primes of:"
+n = gets.chomp
+primes = prime(n.to_i)
+puts "Primes of #{n}: #{primes}"
 #p = prime(8)
 #puts "Primes of 8: #{p}"
 #p = prime(50)
 #puts "Primes of 50: #{p}"
 
 puts "Enter number to find fibs of:"
-n = gets
+n = gets.chomp
 f = fib(n.to_i)
 puts "Fibs of #{n}: #{f}"
 #f = fib(8)
